@@ -21,7 +21,7 @@ document.querySelector('#submit').onclick = function(event) {
 
     let finput = document.getElementById('fnumber');
     let sinput = document.getElementById('snumber');  
-    let answer = document.getElementById('answer');  
+    let answerBlock = document.getElementById('answer'); 
     
     let fnumber = finput.value;
     let snumber = sinput.value;
@@ -32,6 +32,7 @@ document.querySelector('#submit').onclick = function(event) {
     let arr = [];
     arr[0] = fnumber;
     arr[1] = snumber;
+    let answer = '';
     
     
     function NOD(arr)
@@ -56,16 +57,21 @@ document.querySelector('#submit').onclick = function(event) {
         return a;
     }
 
-//     function createTodoList() {
-//     let list = document.createElement('ul');
-//     list.classList.add('list-group');
-//     return list;
-//   }
+    answer = `Найдем НОД(${fnumber}, ${snumber}):\n${snumber} = 1 * ${fnumber} + ${NOD(arr)}\n${fnumber} = ${NOD(arr)} * ${NOD(arr)} + 0`;
+    function createAnswer(answer) {
+        let paragraph = document.createElement('p');
+        paragraph.classList.add('fs-2');
+        paragraph.innerText = answer;
+        return paragraph;
+    }
 
-//     answer.
+    answerBlock.append(createAnswer(answer));
+
+  
     
     console.log(NOD(arr));
     console.log(NOK(arr));
+
     
     console.log(`Найдем НОД(${fnumber}, ${snumber}):\n${snumber} = 1 * ${fnumber} + ${NOD(arr)}\n${fnumber} = ${NOD(arr)} * ${NOD(arr)} + 0`);
     console.log(`Найдем НОК(${fnumber}, ${snumber}):\n(${fnumber} *${snumber})/НОД(${fnumber}, ${snumber}) = (${fnumber} * ${snumber}) / ${NOD(arr)} = ${mult} / ${NOD(arr)} = ${NOK(arr)}`);
